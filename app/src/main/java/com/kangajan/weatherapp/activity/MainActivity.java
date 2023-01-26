@@ -13,7 +13,6 @@ import android.widget.TextView;
 
 import com.kangajan.weatherapp.R;
 import com.kangajan.weatherapp.asyn.task.WeatherAsyncTask;
-import com.kangajan.weatherapp.viewmodel.WeatherViewModel;
 
 public class MainActivity extends AppCompatActivity {
 
