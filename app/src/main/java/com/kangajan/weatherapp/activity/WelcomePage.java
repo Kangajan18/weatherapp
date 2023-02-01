@@ -11,7 +11,7 @@ import android.widget.ProgressBar;
 
 import com.kangajan.weatherapp.R;
 
-public class welcomePage extends AppCompatActivity {
+public class WelcomePage extends AppCompatActivity {
 
     private Button startButton;
 
@@ -27,6 +27,8 @@ public class welcomePage extends AppCompatActivity {
 
         loadBackGround();
 
+
+
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -34,6 +36,8 @@ public class welcomePage extends AppCompatActivity {
             }
         });
     }
+
+
 
     private void loadBackGround(){
         progressBar.setVisibility(View.INVISIBLE);
@@ -46,15 +50,6 @@ public class welcomePage extends AppCompatActivity {
         Intent intent = new Intent(this,MainActivity.class);
 
         startActivity(intent);
-//        new CountDownTimer(1000, 1000) {
-//            public void onFinish() {
-//
-//            }
-//
-//            public void onTick(long millisUntilFinished) {
-//                // millisUntilFinished    The amount of time until finished.
-//            }
-//        }.start();
 
     }
 }

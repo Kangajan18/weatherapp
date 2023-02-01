@@ -1,5 +1,6 @@
 package com.kangajan.weatherapp.rest;
 
+import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
 
@@ -31,10 +32,11 @@ public class RestClient {
 
     private static String DELETE = "DELETE";
 
-    private Context context;
+    private Activity taskActivity;
 
-    public RestClient(Context context) {
-        this.context = context;
+
+    public RestClient(Activity activity) {
+        this.taskActivity = activity;
     }
 
 
@@ -44,7 +46,7 @@ public class RestClient {
         Weather weather = null;
         StringBuilder responseString = new StringBuilder();
         String fullUrl = (Config.WEATHER_DATA_URL).replace("%s",city);
-        Log.e("fullUrl", String.valueOf(fullUrl));
+        Log.e("fullUrl", fullUrl);
         URL requestUrl = new URL(fullUrl);
         HttpURLConnection conn = getConnection(GET, requestUrl);
         conn.connect();
@@ -63,11 +65,10 @@ public class RestClient {
             Log.e("GET weather Response >>", weather.getLocation().country.toString());
 
         } else {
-            weather = new Gson().fromJson(responseString.toString(), Weather.class);
-            Log.e("GET weather Response >>", weather.toString());
+            return null;
         }
         conn.disconnect();
-        return (Weather) weather;
+        return  weather;
 
     }
 

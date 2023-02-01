@@ -3,9 +3,11 @@ package com.kangajan.weatherapp.activity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,33 +20,72 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText citySearch;
     private Button searchButton;
-
     private String cityName;
-
+    private Button historyButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         citySearch = findViewById(R.id.editCitySearch);
         searchButton = findViewById(R.id.searchButton);
+        historyButton = findViewById(R.id.historyButton);
+
+        if (getIntent().getStringExtra("warning") != null) {
+            if (getIntent().getStringExtra("warning").equals("true")) {
+                showErrorDialog();
+            }
+        }
 
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.e( "button: ","working" );
-
                 searchFunction();
+            }
+        });
+
+        historyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToHistoryActivity();
             }
         });
     }
 
-    public void searchFunction(){
+    public void goToHistoryActivity(){
+        Intent intent = new Intent(this,HistoryActivity.class);
+        startActivity(intent);
+    }
+    public void showErrorDialog() {
+
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+        LayoutInflater inflater1 = this.getLayoutInflater();
+        final View view = inflater1.inflate(R.layout.activity_error_message_dialog, null);
+        dialogBuilder.setView(view);
+        final AlertDialog dialogBox = dialogBuilder.create();
+        Button doneButton = view.findViewById(R.id.doneButton);
+
+        doneButton.setOnClickListener(v -> {
+            dialogBox.dismiss();
+            appStart();
+        });
+
+        dialogBox.show();
+
+    }
+
+    private void appStart() {
+        citySearch.setText("");
+    }
+
+    public void searchFunction() {
         cityName = citySearch.getText().toString();
-        Log.e( "searchFunction: ","working" );
-        WeatherAsyncTask weatherAsyncTask = new WeatherAsyncTask(this,cityName);
+        Log.e("searchFunction: ", "working");
+        WeatherAsyncTask weatherAsyncTask = new WeatherAsyncTask(this, cityName);
         weatherAsyncTask.execute("");
     }
+
+
+
 }
 
