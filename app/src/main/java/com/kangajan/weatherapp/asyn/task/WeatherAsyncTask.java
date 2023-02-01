@@ -1,44 +1,21 @@
 package com.kangajan.weatherapp.asyn.task;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
-import android.os.Handler;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.kangajan.weatherapp.Model.Weather;
 import com.kangajan.weatherapp.R;
 import com.kangajan.weatherapp.activity.MainActivity;
-import com.kangajan.weatherapp.activity.WelcomePage;
-import com.kangajan.weatherapp.network.WeatherNetworkService;
 import com.kangajan.weatherapp.rest.RestClient;
-
-import org.w3c.dom.Text;
-
-import java.io.File;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-
-import retrofit2.Call;
-import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class WeatherAsyncTask extends AsyncTask<String, Activity, Weather> {
 
@@ -78,11 +55,10 @@ public class WeatherAsyncTask extends AsyncTask<String, Activity, Weather> {
             dataLinearLayout = taskActivity.findViewById(R.id.dataLinearLayout);
             citySearchEditText = taskActivity.findViewById(R.id.editCitySearch);
         }
-
-        preExcutionTask();
+        preExecutionTask();
     }
 
-    public void preExcutionTask() {
+    public void preExecutionTask() {
         progressBarData.setVisibility(View.VISIBLE);
         imageViewWeather.setVisibility(View.INVISIBLE);
     }
@@ -96,7 +72,6 @@ public class WeatherAsyncTask extends AsyncTask<String, Activity, Weather> {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-
         return weather;
     }
 
@@ -112,20 +87,11 @@ public class WeatherAsyncTask extends AsyncTask<String, Activity, Weather> {
         }
     }
 
-
-
-
-
-
     public void doBackGroundTask(Weather weather) {
 
         dataLinearLayout.setVisibility(View.VISIBLE);
         progressBarData.setVisibility(View.INVISIBLE);
-
-        //https://cdn.weatherapi.com/weather/64x64/day/176.png
-
         String imageUrl = "https:" + weather.getCurrent().condition.icon;
-
         Log.e("fullUrl", imageUrl);
         imageViewWeather.setVisibility(View.VISIBLE);
 

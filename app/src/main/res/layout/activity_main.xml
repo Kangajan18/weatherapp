@@ -3,16 +3,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/weatherdatabackgroud"
     android:alpha="1"
-    android:orientation="vertical"
+    android:background="@drawable/weatherdatabackgroud"
+    android:orientation="horizontal"
     tools:context=".activity.MainActivity">
+
+    <LinearLayout
+        android:layout_width="50dp"
+        android:layout_height="50dp">
+
+        <Button
+            android:id="@+id/historyButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:onClick="enterIntoHistory"
+            />
+    </LinearLayout>
 
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="360dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
+        android:layout_gravity="right"
         android:background="#7AFFFFFF"
         android:orientation="horizontal">
 
@@ -32,7 +44,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginHorizontal="15dp"
-            android:text="Search" />
+            android:text="Search"
+            android:textSize="10sp" />
 
 
     </LinearLayout>
@@ -43,10 +56,10 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:orientation="horizontal"
-        android:visibility="invisible"
         android:paddingLeft="16dp"
         android:paddingTop="16dp"
-        android:paddingRight="16dp">
+        android:paddingRight="16dp"
+        android:visibility="invisible">
 
 
         <LinearLayout
@@ -86,23 +99,23 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:textAlignment="gravity"
+                android:orientation="vertical"
                 android:paddingVertical="10dp"
-                android:orientation="vertical">
+                android:textAlignment="gravity">
 
                 <ImageView
                     android:id="@+id/imageViewWeather"
                     android:layout_width="match_parent"
                     android:layout_height="70dp"
-                    android:layout_centerInParent="true"/>
+                    android:layout_centerInParent="true" />
 
                 <TextView
                     android:id="@+id/textviewData"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="data"
-                    android:textColor="@color/black"
                     android:textAlignment="center"
+                    android:textColor="@color/black"
                     android:textSize="40dp" />
             </LinearLayout>
         </LinearLayout>
@@ -113,20 +126,18 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_gravity="center"
         android:layout_marginTop="80dp"
-        >
+        android:orientation="horizontal">
 
 
         <ProgressBar
             android:id="@+id/progressBarData"
             style="?android:attr/progressBarStyle"
             android:layout_width="wrap_content"
-            android:visibility="gone"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:visibility="gone" />
     </LinearLayout>
-
 
 </LinearLayout>

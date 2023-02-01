@@ -46,7 +46,7 @@ public class RestClient {
         Weather weather = null;
         StringBuilder responseString = new StringBuilder();
         String fullUrl = (Config.WEATHER_DATA_URL).replace("%s",city);
-        Log.e("fullUrl", String.valueOf(fullUrl));
+        Log.e("fullUrl", fullUrl);
         URL requestUrl = new URL(fullUrl);
         HttpURLConnection conn = getConnection(GET, requestUrl);
         conn.connect();
