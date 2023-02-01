@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/weatherdatabackgroud"
+    android:alpha="1"
     android:orientation="vertical"
     tools:context=".activity.MainActivity">
 
@@ -11,9 +13,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:orientation="horizontal"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp">
+        android:background="#7AFFFFFF"
+        android:orientation="horizontal">
 
         <!-- Include other widget or layout tags here. These are considered
                 "child views" or "children" of the linear layout -->
@@ -23,7 +24,8 @@
             android:id="@+id/editCitySearch"
             android:layout_width="250dp"
             android:layout_height="match_parent"
-            android:hint="Enter the city name" />
+            android:hint="Enter the city name"
+            android:paddingLeft="25dp" />
 
         <Button
             android:id="@+id/searchButton"
@@ -36,20 +38,22 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/dataLinearLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:background="@drawable/weatherdatabackgroud"
         android:orientation="horizontal"
+        android:visibility="invisible"
         android:paddingLeft="16dp"
+        android:paddingTop="16dp"
         android:paddingRight="16dp">
 
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="150dp"
             android:layout_gravity="center_horizontal"
-            android:background="#73000000"
+            android:background="#B2000000"
             android:orientation="horizontal"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
@@ -62,8 +66,8 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/textviewdate"
-                    android:layout_width="250dp"
+                    android:id="@+id/textviewDate"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="date"
                     android:textColor="@color/white"
@@ -71,9 +75,10 @@
 
                 <TextView
                     android:id="@+id/textviewCity"
-                    android:layout_width="250dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="TextView"
+                    android:textColor="#FFFFFF"
                     android:textSize="38dp" />
             </LinearLayout>
 
@@ -81,18 +86,46 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="20dp"
+                android:textAlignment="gravity"
+                android:paddingVertical="10dp"
                 android:orientation="vertical">
 
+                <ImageView
+                    android:id="@+id/imageViewWeather"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_centerInParent="true"/>
+
                 <TextView
-                    android:id="@+id/textviewdata"
-                    android:layout_width="250dp"
+                    android:id="@+id/textviewData"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="data"
-                    android:textSize="58dp" />
+                    android:textColor="@color/black"
+                    android:textAlignment="center"
+                    android:textSize="40dp" />
             </LinearLayout>
         </LinearLayout>
 
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:layout_marginTop="80dp"
+        >
+
+
+        <ProgressBar
+            android:id="@+id/progressBarData"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:visibility="gone"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
     </LinearLayout>
 
 

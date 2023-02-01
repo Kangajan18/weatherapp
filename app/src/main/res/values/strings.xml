@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">weatherapp</string>
+    <string name="error_massage_dialog_title">Warning</string>
+    <string name="error_massage_dialog_text">Please type the correct city name.</string>
 </resources>
